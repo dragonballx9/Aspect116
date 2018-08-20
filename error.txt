@@ -1,0 +1,22 @@
+TVBootApplication
+
+URL to invoke
+http://localhost:8088//buysell/print
+
+Below error comes when session is invalidated automatically from tomcat.
+
+It works fine when from controller if we do req.getSession().invalidate();
+         
+
+2018-08-19 19:52:30 ERROR o.a.c.c.C.[Tomcat].[localhost].[/] - Session event listener threw exception
+java.lang.IllegalStateException: No thread-bound request found: Are you referring to request attributes outside of an actual web request, or processing a request outside of the originally receiving thread? If you are actually operating within a web request and still receive this message, your code is probably running outside of DispatcherServlet/DispatcherPortlet: In this case, use RequestContextListener or RequestContextFilter to expose the current request.
+	at org.springframework.web.context.request.RequestContextHolder.currentRequestAttributes(RequestContextHolder.java:131) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.context.support.WebApplicationContextUtils.currentRequestAttributes(WebApplicationContextUtils.java:309) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.context.support.WebApplicationContextUtils.access$400(WebApplicationContextUtils.java:64) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.context.support.WebApplicationContextUtils$RequestObjectFactory.getObject(WebApplicationContextUtils.java:325) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.context.support.WebApplicationContextUtils$RequestObjectFactory.getObject(WebApplicationContextUtils.java:320) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AutowireUtils$ObjectFactoryDelegatingInvocationHandler.invoke(AutowireUtils.java:307) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at com.sun.proxy.$Proxy75.getSession(Unknown Source) ~[na:na]
+	at com.buy.sell.aspects.TxnBuySellAspect.executePendingBuySell(TxnBuySellAspect.java:40) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	
